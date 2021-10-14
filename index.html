@@ -1,28 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background-Generator</title>
-    <link rel="text/stylesheet" href="style.css">
+    <title>Gradient Background</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-    <h1>COOL GENERATOR</h1>
-    <div class="buffer"></div>
+<body id="gradient">
+    <h1>Background Generator</h1>
 
-    <input type="color" id="color1">
-    <input type="color" id="color2">
-    <br>
-    <button id="randomBtn" class="button">Random</button><button id="autoBtn" class="button">Auto<button id="stopBtn"
-            class="button">Stop</button>
-        <p id="colorRGB"></p>
+    <div id="main">
+
+        <section id="sidebar">
+
+            <div class="sidebar-section">
+                <button id="close-side">x</button>
+                <h3 class="sidebar-heading">Choose Colors </h3>
+                <p id="colorRGB"></p>
+                <input id="color1" class="colorInput" type="color" name="color1" value="#00ff00">
+                <input id="color2" class="colorInput" type="color" name="color2" value="#ff0000">
+
+                <button id="randomBtn" class="button">Random</button><button id="autoBtn" class="button">Auto<button
+                        id="stopBtn" class="button">Stop</button>
+
+            </div>
+            <div class="sidebar-section">
+                <h3 class="sidebar-heading">Upload Image</h3>
+
+                <input type="file" id="fileInput"><button id="acceptImg" class="button">Put img</button>
+                <button id="remove-button" class="button">Remove img</button>
+            </div>
+            <div class="sidebar-section">
+                <h3 class="sidebar-heading">Set Properties</h3>
+                <div class="selections">
+                    <div>
+                        <p class="attribute-description">Blend-Mode:</p>
+                        <select id="selectBlendMode" class="button">
+                            <option class="blend-option" value="multiply">multiply</option>
+                            <option class="blend-option" value="normal">normal</option>
+                            <option class="blend-option" value="overlay">overlay</option>
+                            <option class="blend-option" value="screen">screen</option>
+                            <option class="blend-option" value="darken">darken</option>
+                            <option class="blend-option" value="lighten">lighten</option>
+                            <option class="blend-option" value="color-dodge">color-dodge</option>
+                            <option class="blend-option" value="color-burn">color-burn</option>
+                            <option class="blend-option" value="hard-light">hard-light</option>
+                            <option class="blend-option" value="soft-light">soft-light</option>
+                            <option class="blend-option" value="exclusion">exclusion</option>
+                            <option class="blend-option" value="saturation">saturation</option>
+                            <option class="blend-option" value="hue">hue</option>
+                            <option class="blend-option" value="color">color</option>
+                            <option class="blend-option" value="luminosity">luminosity</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="attribute-description">Background-Size:</p>
+                        <select id="selectBackgroundSize" class="button">
+                            <option class="SizeOption" value="cover">cover</option>
+                            <option class="SizeOption" value="contain">contain</option>
+                            <option class="SizeOption" value="auto">auto</option>
+                            <option class="SizeOption" value="initial">initial</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="mainBody">
+            <button id="open-side">Settings</button>
 
 
-        <script src="script.js"></script>
-
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>

@@ -1,23 +1,50 @@
-let body= document.querySelector("body");
+let body= document.querySelector("#mainBody");
 let color1= document.getElementById("color1");
 let color2= document.getElementById("color2");
 let p= document.getElementById("colorRGB");
 let randomBtn= document.getElementById("randomBtn");
 let autoBtn= document.getElementById("autoBtn")
 let stopBtn= document.getElementById("stopBtn");
+const sidebar=document.getElementById("sidebar")
+let mainRecentImage=sessionStorage.getItem("uploaded-image")
+const selectBlend=document.getElementById("selectBlendMode")
+const btnBack=document.getElementById("acceptImg")
+const inputFile=document.getElementById("fileInput")
+const removeBtn=document.getElementById("remove-button")
+const selectSize=document.getElementById("selectBackgroundSize")
+const closeBtn=document.getElementById("close-side")
+const openBtn=document.getElementById("open-side")
 
 
 
 
-colorGradient= () =>{
-  body.style.background=`linear-gradient(to right,${color1.value},${color2.value})`;
-  p.innerText=body.style.background;
+// colorGradient= () =>{
+  
+//   body.style.background=`linear-gradient(to right,${color1.value},${color2.value})`;
+//   p.innerText=body.style.background;
+// }
+
+
+
+// color1.addEventListener("input",colorGradient);
+// color2.addEventListener("input",colorGradient);
+
+//*******SET COLOR GRADIENT AND IMAGE IF EXISTS IN THE BACKGROUND OF MAIN-DIV ****//
+
+function setGradient() {
+	body.style.background='url("'+mainRecentImage+'") ,linear-gradient(to right,'+color1.value+','+color2.value+')';
+	body.style.backgroundBlendMode=selectBlend.value
+	body.style.backgroundSize=selectSize.value
+	body.style.backgroundRepeat="no-repeat"
+  body.style.backgroundPosition="center"
+	body.style.height="100%"
+  p.innerText='linear-gradient(to right,'+color1.value+','+color2.value+')';
+  // p.innerText=body.style.background;
 }
 
 
-
-color1.addEventListener("input",colorGradient);
-color2.addEventListener("input",colorGradient);
+color1.addEventListener("input", setGradient);
+color2.addEventListener("input", setGradient);
 
 //***RANDOM-PICK***//
 
@@ -32,7 +59,7 @@ return newColor}
 randomColorPick=()=>{
   color1.value=randomColor();
   color2.value=randomColor();
-  colorGradient();
+  setGradient();
 }
 
   //**AUTO PLAY**//
@@ -43,14 +70,81 @@ autoColorDisplay=()=>{
       i=0}
    randomColorPick()}
   },1000)
+
   //**STOP AUTO-PLAY**//
   stopBtn.addEventListener("click",()=>{
             clearInterval(repeat);});
 }
 
 
-
-
-
 randomBtn.addEventListener("click",randomColorPick);
 autoBtn.addEventListener("click",autoColorDisplay)
+
+
+
+imgUp=()=>{
+	sessionStorage.removeItem("uploaded-image")
+
+	const reader=new FileReader()
+	console.log(reader)
+	reader.addEventListener("load",()=>{
+		sessionStorage.setItem("uploaded-image",reader.result);
+		console.log(sessionStorage)
+
+	})
+	reader.readAsDataURL(inputFile.files[0])
+}
+
+
+ImgBackground=()=>{
+	
+	// const recentImage=localStorage.getItem("uploaded-image")
+	var recentImage=sessionStorage.getItem("uploaded-image")
+	mainRecentImage=recentImage
+	
+
+	if(recentImage){
+		body.style.background='url("'+recentImage+'") ,linear-gradient(to right,'+color1.value+','+color2.value+')';
+		body.style.backgroundBlendMode=selectBlend.value
+		body.style.backgroundSize=selectSize.value
+		body.style.backgroundRepeat="no-repeat"
+    body.style.backgroundPosition="center"
+		body.style.height="100%"
+		console.log(body.style)
+	}
+
+
+}
+
+
+inputFile.addEventListener("change",imgUp)
+btnBack.addEventListener("click",ImgBackground)
+selectBlend.addEventListener("change",()=>{
+
+	body.style.backgroundBlendMode=selectBlend.value
+})
+selectSize.addEventListener("change",()=>{
+  body.style.backgroundSize=selectSize.value
+})
+
+
+
+//*** REMOVE IMAGE FROM SESSION STORAGE AND RERENDER THE BROWSER ******//
+removeBtn.addEventListener("click",()=>{
+  sessionStorage.clear()
+  location.reload()
+})
+
+
+
+
+closeBtn.addEventListener("click",()=>{
+  sidebar.style.width=0;
+  openBtn.style.display="block"
+
+})
+
+openBtn.addEventListener("click",()=>{
+  sidebar.style.width="25%"
+  openBtn.style.display="none"
+})
