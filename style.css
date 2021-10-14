@@ -1,0 +1,42 @@
+body{
+    margin:0;
+    background:linear-gradient(to right,rgb(68,255,0),rgb(255,0,0));
+    text-align:center;
+  }
+  
+  h1{
+    text-align:center;
+    letter-spacing:20px;
+    font-size:60px;
+    background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255));
+  }
+  .buffer{
+    height:80px;
+  }
+  
+  input{
+    margin:20px;
+  }
+  #colorRGB{
+    font-size:30px;
+    font-weight:20px;
+  }
+  .button{
+    margin:5px;
+    width:150px;
+    border-radius:10px;
+    cursor:pointer;
+    background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255));
+  }
+  
+  #button:hover{
+    background:rgb(58,54,54);
+  }
+  
+  input {
+      width: 60px;
+      height: 40px;
+      padding: 20px;
+      background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255));
+      border-radius:30px;
+  }
