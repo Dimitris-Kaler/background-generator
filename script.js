@@ -17,18 +17,6 @@ const openBtn=document.getElementById("open-side")
 
 
 
-
-// colorGradient= () =>{
-  
-//   body.style.background=`linear-gradient(to right,${color1.value},${color2.value})`;
-//   p.innerText=body.style.background;
-// }
-
-
-
-// color1.addEventListener("input",colorGradient);
-// color2.addEventListener("input",colorGradient);
-
 //*******SET COLOR GRADIENT AND IMAGE IF EXISTS IN THE BACKGROUND OF MAIN-DIV ****//
 
 function setGradient() {
@@ -137,13 +125,14 @@ removeBtn.addEventListener("click",()=>{
 
 
 
-
+//***CLOSE SIDE NAV ***** */
 closeBtn.addEventListener("click",()=>{
   sidebar.style.width=0;
   openBtn.style.display="block"
 
 })
 
+//*****OPEN SIDE NAV ******/
 openBtn.addEventListener("click",()=>{
   sidebar.style.width="25%"
   openBtn.style.display="none"
