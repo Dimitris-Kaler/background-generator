@@ -16,9 +16,9 @@ body{
   #mainBody{
     z-index:1;
     width:100%;
-   
+    -webkit-print-color-adjust:exact;
+    color-adjust: exact;/*firefox*/
      background:linear-gradient(to right,rgb(68,255,0),rgb(255,0,0));
-  /* text-align:center; */
   }
 
   #sidebar{
@@ -145,3 +145,12 @@ text-align:center;
   /* #selectBlendMode{
     overflow-y:scroll
   } */
+
+ 
+  @media print
+    {
+        #sidebar   { display: none; }
+        h1         { display:none; }
+        #mainBody  { display: block; }
+        #open-side {visibility:hidden;}
+    }

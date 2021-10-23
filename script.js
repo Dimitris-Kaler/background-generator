@@ -1,4 +1,5 @@
-let body= document.querySelector("#mainBody");
+let generatedBody= document.querySelector("#mainBody");
+const windowsBody=document.querySelector("#gradient")
 let color1= document.getElementById("color1");
 let color2= document.getElementById("color2");
 let p= document.getElementById("colorRGB");
@@ -14,18 +15,21 @@ const removeBtn=document.getElementById("remove-button")
 const selectSize=document.getElementById("selectBackgroundSize")
 const closeBtn=document.getElementById("close-side")
 const openBtn=document.getElementById("open-side")
+const printBtn=document.getElementById("print-btn")
+console.log(generatedBody.innerHTML)
+console.log(document.body)
 
 
 
 //*******SET COLOR GRADIENT AND IMAGE IF EXISTS IN THE BACKGROUND OF MAIN-DIV ****//
 
 function setGradient() {
-	body.style.background='url("'+mainRecentImage+'") ,linear-gradient(to right,'+color1.value+','+color2.value+')';
-	body.style.backgroundBlendMode=selectBlend.value
-	body.style.backgroundSize=selectSize.value
-	body.style.backgroundRepeat="no-repeat"
-  body.style.backgroundPosition="center"
-	body.style.height="100%"
+	generatedBody.style.background='url("'+mainRecentImage+'") ,linear-gradient(to right,'+color1.value+','+color2.value+')';
+	generatedBody.style.backgroundBlendMode=selectBlend.value
+	generatedBody.style.backgroundSize=selectSize.value
+	generatedBody.style.backgroundRepeat="no-repeat"
+  generatedBody.style.backgroundPosition="center"
+	generatedBody.style.height="100%"
   p.innerText='linear-gradient(to right,'+color1.value+','+color2.value+')';
   // p.innerText=body.style.background;
 }
@@ -92,13 +96,13 @@ ImgBackground=()=>{
 	
 
 	if(recentImage){
-		body.style.background='url("'+recentImage+'") ,linear-gradient(to right,'+color1.value+','+color2.value+')';
-		body.style.backgroundBlendMode=selectBlend.value
-		body.style.backgroundSize=selectSize.value
-		body.style.backgroundRepeat="no-repeat"
-    body.style.backgroundPosition="center"
-		body.style.height="100%"
-		console.log(body.style)
+		generatedBody.style.background='url("'+recentImage+'") ,linear-gradient(to right,'+color1.value+','+color2.value+')';
+		generatedBody.style.backgroundBlendMode=selectBlend.value
+		generatedBody.style.backgroundSize=selectSize.value
+		generatedBody.style.backgroundRepeat="no-repeat"
+    generatedBody.style.backgroundPosition="center"
+		generatedBody.style.height="100%"
+		// console.log(body.style)
 	}
 
 
@@ -109,10 +113,10 @@ inputFile.addEventListener("change",imgUp)
 btnBack.addEventListener("click",ImgBackground)
 selectBlend.addEventListener("change",()=>{
 
-	body.style.backgroundBlendMode=selectBlend.value
+	generatedBody.style.backgroundBlendMode=selectBlend.value
 })
 selectSize.addEventListener("change",()=>{
-  body.style.backgroundSize=selectSize.value
+  generatedBody.style.backgroundSize=selectSize.value
 })
 
 
@@ -136,4 +140,11 @@ closeBtn.addEventListener("click",()=>{
 openBtn.addEventListener("click",()=>{
   sidebar.style.width="25%"
   openBtn.style.display="none"
+})
+
+
+//*******PRINT BACKGROUND ******/
+
+printBtn.addEventListener("click",()=>{
+window.print()
 })
