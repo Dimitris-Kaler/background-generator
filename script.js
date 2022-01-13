@@ -16,6 +16,8 @@ const selectSize=document.getElementById("selectBackgroundSize")
 const closeBtn=document.getElementById("close-side")
 const openBtn=document.getElementById("open-side")
 const printBtn=document.getElementById("print-btn")
+const i=document.getElementsByTagName("i")[0]
+console.log(i)
 console.log(generatedBody.innerHTML)
 console.log(document.body)
 
@@ -131,15 +133,25 @@ removeBtn.addEventListener("click",()=>{
 
 //***CLOSE SIDE NAV ***** */
 closeBtn.addEventListener("click",()=>{
-  sidebar.style.width=0;
-  openBtn.style.display="block"
+  i.classList.remove("left")
+  i.classList.add("right")
+  sidebar.style.width="1px";
+  // openBtn.style.display="block"
 
 })
 
 //*****OPEN SIDE NAV ******/
 openBtn.addEventListener("click",()=>{
+  if(i.classList.contains("left")){
+    console.log("gamisou ksekolla")
+    i.classList.remove("left")
+    i.classList.add("right")
+    sidebar.style.width="1px"
+  }
+  else{
   sidebar.style.width="25%"
-  openBtn.style.display="none"
+  // openBtn.style.display="none"
+  i.classList.add("left")}
 })
 
 

@@ -19,6 +19,10 @@ body{
     -webkit-print-color-adjust:exact;
     color-adjust: exact;/*firefox*/
      background:linear-gradient(to right,rgb(68,255,0),rgb(255,0,0));
+     display:flex;
+     flex-direction:row;
+     justify-content:flex-start;
+     align-items:center;
   }
 
   #sidebar{
@@ -26,7 +30,8 @@ body{
     /* width:0; */
     width:25%;
     height:100%;
-    background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255));
+    /* background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255)); */
+    background-color:#525252;
     transition:width 1s;
   }
 
@@ -39,8 +44,9 @@ body{
     text-align:center;
     letter-spacing:20px;
     font-size:60px;
-    background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255));
+    /* background:linear-gradient(to right,rgb(0,0,0),rgb(255,255,255)); */
     margin:0;
+    background-color:#525252;
   }
   .buffer{
     height:80px;
@@ -135,16 +141,34 @@ text-align:center;
 
   #open-side{
     cursor:pointer;
-    width:120px;
-    height:50px;
-    display:none;
-    background-color:green;
+    width:20px;
+    height:150px;
+    /* display:none; */
+    background-color:#525252;
+    border-radius :0 1rem 1rem 0;
+    margin:auto 0;
     color:white;
     transition:display 2s;
   }
   /* #selectBlendMode{
     overflow-y:scroll
   } */
+
+  .arrow{
+    border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left{
+  transform:rotate(135deg);
+  -webkit-transform:rotate(135deg)
+}
 
  
   @media print
